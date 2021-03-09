@@ -14,15 +14,24 @@
     }
   });
 
+  var catalogueHostname = process.env.CATALOGUE_HOSTNAME || "localhost";
+  var cataloguePort = process.env.CATALOGUE_PORT || 80;
+  var cartsHostname = process.env.CARTS_HOSTNAME || "localhost";
+  var cartsPort = process.env.CARTS_PORT || 80;
+  var ordersHostname = process.env.ORDERS_HOSTNAME || "localhost";
+  var ordersPort = process.env.ORDERS_PORT || 80;
+  var usersHostname = process.env.USERS_HOSTNAME || "localhost";
+  var usersPort = process.env.USERS_PORT || 80;
+
   module.exports = {
-    catalogueUrl:  util.format("http://catalogue%s", domain),
-    tagsUrl:       util.format("http://catalogue%s/tags", domain),
-    cartsUrl:      util.format("http://carts%s/carts", domain),
-    ordersUrl:     util.format("http://orders%s", domain),
-    customersUrl:  util.format("http://user%s/customers", domain),
-    addressUrl:    util.format("http://user%s/addresses", domain),
-    cardsUrl:      util.format("http://user%s/cards", domain),
-    loginUrl:      util.format("http://user%s/login", domain),
-    registerUrl:   util.format("http://user%s/register", domain),
+    catalogueUrl:  util.format("http://%s:%s", catalogueHostname, cataloguePort),
+    tagsUrl:       util.format("http://%s:%s/tags", catalogueHostname, cataloguePort),
+    cartsUrl:      util.format("http://%s:%s/carts", cartsHostname, cartsPort),
+    ordersUrl:     util.format("http://%s:%s", ordersHostname, ordersPort),
+    customersUrl:  util.format("http://%s:%s/customers", usersHostname, usersPort),
+    addressUrl:    util.format("http://%s:%s/addresses", usersHostname, usersPort),
+    cardsUrl:      util.format("http://%s:%s/cards", usersHostname, usersPort),
+    loginUrl:      util.format("http://%s:%s/login", usersHostname, usersPort),
+    registerUrl:   util.format("http://%s:%s/register", usersHostname, usersPort),
   };
 }());
